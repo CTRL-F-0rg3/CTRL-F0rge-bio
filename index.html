@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Veclia - Bezpieczny komunikator dla każdego</title>
+<style>
+* {
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+}
+
+body {
+font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+background: linear-gradient(135deg, #0a0a0a 0%, #1a0a2e 50%, #0a0a0a 100%);
+color: #e0e0e0;
+overflow-x: hidden;
+min-height: 100vh;
+}
+
+.glass {
+background: rgba(40, 20, 60, 0.3);
+backdrop-filter: blur(20px);
+border: 1px solid rgba(147, 51, 234, 0.2);
+}
+
+header {
+padding: 2rem;
+display: flex;
+justify-content: space-between;
+align-items: center;
+position: relative;
+}
+
+.logo {
+font-size: 2.5rem;
+font-weight: 700;
+background: linear-gradient(135deg, #a855f7 0%, #ec4899 50%, #8b5cf6 100%);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+background-clip: text;
+letter-spacing: 3px;
+}
+
+.cat-shape {
+width: 50px;
+height: 50px;
+background: linear-gradient(135deg, #a855f7 0%, #ec4899 50%, #8b5cf6 100%);
+border-radius: 8px;
+position: relative;
+display: flex;
+align-items: center;
+justify-content: center;
+font-size: 1.8rem;
+}
+
+.cat-shape::before {
+content: '🐱';
+position: absolute;
+}
+
+.download-btn {
+padding: 0.7rem 1.5rem;
+font-size: 0.95rem;
+font-weight: 600;
+background: linear-gradient(135deg, #8b5cf6 0%, #ec4899 100%);
+color: white;
+border-radius: 25px;
+text-decoration: none;
+border: none;
+cursor: pointer;
+transition: transform 0.2s ease;
+}
+
+.download-btn:hover {
+transform: scale(1.05);
+}
+
+.hero {
+padding: 4rem 2rem;
+text-align: center;
+max-width: 900px;
+margin: 0 auto;
+}
+
+.hero h2 {
+font-size: 2.5rem;
+margin-bottom: 1.5rem;
+background: linear-gradient(90deg, #e0e0e0 0%, #b794f6 50%, #e0e0e0 100%);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+background-clip: text;
+}
+
+.hero p {
+font-size: 1.2rem;
+line-height: 1.8;
+color: #c0c0c0;
+margin-bottom: 2rem;
+}
+
+.features-flow {
+padding: 3rem 2rem;
+max-width: 1000px;
+margin: 0 auto;
+}
+
+.feature-item {
+display: flex;
+align-items: center;
+gap: 3rem;
+margin: 4rem 0;
+padding: 2rem;
+}
+
+.feature-item:nth-child(even) {
+flex-direction: row-reverse;
+}
+
+.feature-icon {
+font-size: 4rem;
+min-width: 100px;
+text-align: center;
+filter: drop-shadow(0 0 20px rgba(168, 85, 247, 0.4));
+}
+
+.feature-content {
+flex: 1;
+}
+
+.feature-content h3 {
+font-size: 1.8rem;
+margin-bottom: 1rem;
+color: #b794f6;
+}
+
+.feature-content p {
+color: #d0d0d0;
+line-height: 1.7;
+font-size: 1.1rem;
+}
+
+.code-section {
+padding: 4rem 2rem;
+max-width: 900px;
+margin: 0 auto;
+text-align: center;
+}
+
+.code-section h3 {
+font-size: 2rem;
+margin-bottom: 2rem;
+color: #b794f6;
+}
+
+.code-animation {
+border-radius: 15px;
+padding: 2rem;
+position: relative;
+min-height: 200px;
+}
+
+.code-line {
+font-family: 'Courier New', monospace;
+font-size: 0.95rem;
+color: #a0a0a0;
+text-align: left;
+margin: 0.5rem 0;
+opacity: 0;
+animation: fadeIn 0.5s ease forwards;
+}
+
+.code-line:nth-child(1) { animation-delay: 0.2s; }
+.code-line:nth-child(2) { animation-delay: 0.5s; }
+.code-line:nth-child(3) { animation-delay: 0.8s; }
+.code-line:nth-child(4) { animation-delay: 1.1s; }
+.code-line:nth-child(5) { animation-delay: 1.4s; }
+
+@keyframes fadeIn {
+to { opacity: 1; }
+}
+
+.keyword { color: #c792ea; }
+.function { color: #82aaff; }
+.string { color: #c3e88d; }
+.comment { color: #676e95; font-style: italic; }
+
+footer {
+padding: 2rem;
+text-align: center;
+color: #808080;
+border-top: 1px solid rgba(147, 51, 234, 0.2);
+margin-top: 4rem;
+}
+
+@media (max-width: 768px) {
+.feature-item {
+flex-direction: column !important;
+gap: 1.5rem;
+text-align: center;
+}
+}
+</style>
+</head>
+<body>
+<header>
+<div style="display: flex; align-items: center; gap: 1rem;">
+<div class="cat-shape"></div>
+<h1 class="logo">VECLIA</h1>
+</div>
+<a href="#" class="download-btn">Pobierz</a>
+</header>
+
+<section class="hero">
+<h2>Komunikacja bez kompromisów</h2>
+<p>
+Veclia to nowoczesny komunikator peer-to-peer z szyfrowaniem end-to-end. 
+Bezpieczny, prywatny i stworzony z myślą o wygodzie użytkownika — bez nachalnych subskrypcji.
+</p>
+</section>
+
+<section class="features-flow">
+<div class="feature-item">
+<div class="feature-icon">🔒</div>
+<div class="feature-content">
+<h3>Szyfrowanie end-to-end</h3>
+<p>Twoje rozmowy są chronione od momentu wysłania do momentu odbioru. Tylko Ty i Twoi rozmówcy macie do nich dostęp — nikt więcej.</p>
+</div>
+</div>
+
+<div class="feature-item">
+<div class="feature-icon">🌐</div>
+<div class="feature-content">
+<h3>Bezpośrednie połączenia P2P</h3>
+<p>Komunikacja peer-to-peer oznacza brak pośredników. Twoje dane nie trafiają na żadne serwery — pozostają tylko między Tobą a odbiorcą.</p>
+</div>
+</div>
+
+<div class="feature-item">
+<div class="feature-icon">🛠️</div>
+<div class="feature-content">
+<h3>Własne kanały i rozszerzenia</h3>
+<p>Programuj bezpośrednio w aplikacji. Twórz własne kanały, dostosowuj funkcje i rozszerzaj możliwości Veclii według swoich potrzeb.</p>
+</div>
+</div>
+
+<div class="feature-item">
+<div class="feature-icon">💜</div>
+<div class="feature-content">
+<h3>Bez nachalnych płatności</h3>
+<p>Veclia nie wciska Ci subskrypcji na każdym kroku. Używaj komunikatora swobodnie, bez presji finansowej i ukrytych kosztów.</p>
+</div>
+</div>
+
+<div class="feature-item">
+<div class="feature-icon">⚡</div>
+<div class="feature-content">
+<h3>Nowoczesny i intuicyjny</h3>
+<p>Elegancki interfejs zaprojektowany z myślą o Twojej wygodzie. Wszystko, czego potrzebujesz, dokładnie tam, gdzie tego oczekujesz.</p>
+</div>
+</div>
+</section>
+
+<section class="code-section">
+<h3>Programuj swoją komunikację</h3>
+<p style="color: #c0c0c0; font-size: 1.1rem; line-height: 1.7; margin-bottom: 2rem;">
+Twórz własne typy kanałów przy użyciu CSS, JavaScript i HTML. Projektuj interfejsy dokładnie takie, jakie chcesz — bez ograniczeń. 
+Veclia działa na silniku napisanym w Rust, gwarantując najwyższą wydajność i bezpieczeństwo.
+</p>
+<div class="code-animation glass">
+<div class="code-line"><span class="comment">// Stwórz własny kanał w Veclii</span></div>
+<div class="code-line"><span class="keyword">const</span> channel = <span class="function">veclia.createChannel</span>({</div>
+<div class="code-line">  name: <span class="string">'MójPrywatnyKanał'</span>,</div>
+<div class="code-line">  encryption: <span class="string">'AES-256'</span>,</div>
+<div class="code-line">  <span class="function">onMessage</span>: (msg) => <span class="function">handleMessage</span>(msg)</div>
+<div class="code-line">});</div>
+</div>
+</section>
+
+<footer>
+<p>&copy; 2025 Veclia. Komunikacja stworzona z myślą o ludziach.</p>
+</footer>
+</body>
+</html>
