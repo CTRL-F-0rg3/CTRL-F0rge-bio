@@ -1,349 +1,285 @@
 <!DOCTYPE html>
 <html lang="pl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Glassmorphism Design</title>
-    <style>
-        :root {
-            --glass-bg: rgba(255, 255, 255, 0.1);
-            --glass-border: rgba(255, 255, 255, 0.18);
-            --blur-strong: blur(30px);
-            --shadow-glass: 0 8px 32px rgba(31, 38, 135, 0.37);
-            --text-primary: rgba(255, 255, 255, 0.95);
-            --text-secondary: rgba(255, 255, 255, 0.7);
-            --radius-md: 25px;
-        }
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Veclia - Bezpieczny komunikator dla każdego</title>
+<style>
+* {
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+}
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+body {
+font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+background: linear-gradient(135deg, #0a0a0a 0%, #1a0a2e 50%, #0a0a0a 100%);
+color: #e0e0e0;
+overflow-x: hidden;
+min-height: 100vh;
+}
 
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            min-height: 100vh;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
-            overflow-x: hidden;
-            position: relative;
-        }
+.glass {
+background: rgba(40, 20, 60, 0.3);
+backdrop-filter: blur(20px);
+border: 1px solid rgba(147, 51, 234, 0.2);
+}
 
-        .blob {
-            position: absolute;
-            border-radius: 50%;
-            filter: blur(80px);
-            opacity: 0.7;
-            z-index: 1;
-        }
+header {
+padding: 2rem;
+display: flex;
+justify-content: space-between;
+align-items: center;
+position: relative;
+}
 
-        .blob1 {
-            width: 400px;
-            height: 400px;
-            background: linear-gradient(45deg, #ff006e, #ff4d00);
-            top: -100px;
-            left: -100px;
-            animation: float1 20s infinite ease-in-out;
-        }
+.logo {
+font-size: 2.5rem;
+font-weight: 700;
+background: linear-gradient(135deg, #a855f7 0%, #ec4899 50%, #8b5cf6 100%);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+background-clip: text;
+letter-spacing: 3px;
+}
 
-        .blob2 {
-            width: 350px;
-            height: 350px;
-            background: linear-gradient(45deg, #f093fb, #f5576c);
-            bottom: -80px;
-            right: -80px;
-            animation: float2 18s infinite ease-in-out;
-        }
+.cat-shape {
+width: 50px;
+height: 50px;
+background: linear-gradient(135deg, #a855f7 0%, #ec4899 50%, #8b5cf6 100%);
+border-radius: 8px;
+position: relative;
+display: flex;
+align-items: center;
+justify-content: center;
+font-size: 1.8rem;
+}
 
-        .blob3 {
-            width: 300px;
-            height: 300px;
-            background: linear-gradient(45deg, #4facfe, #00f2fe);
-            top: 50%;
-            right: 10%;
-            animation: float3 22s infinite ease-in-out;
-        }
+.cat-shape::before {
+content: '🐱';
+position: absolute;
+}
 
-        @keyframes float1 {
-            0%, 100% { transform: translate(0, 0) rotate(0deg); }
-            33% { transform: translate(50px, -50px) rotate(120deg); }
-            66% { transform: translate(-30px, 30px) rotate(240deg); }
-        }
+.download-btn {
+padding: 0.7rem 1.5rem;
+font-size: 0.95rem;
+font-weight: 600;
+background: linear-gradient(135deg, #8b5cf6 0%, #ec4899 100%);
+color: white;
+border-radius: 25px;
+text-decoration: none;
+border: none;
+cursor: pointer;
+transition: transform 0.2s ease;
+}
 
-        @keyframes float2 {
-            0%, 100% { transform: translate(0, 0) rotate(0deg); }
-            33% { transform: translate(-60px, -40px) rotate(120deg); }
-            66% { transform: translate(40px, 50px) rotate(240deg); }
-        }
+.download-btn:hover {
+transform: scale(1.05);
+}
 
-        @keyframes float3 {
-            0%, 100% { transform: translate(0, 0) scale(1); }
-            50% { transform: translate(-80px, 60px) scale(1.1); }
-        }
+.hero {
+padding: 4rem 2rem;
+text-align: center;
+max-width: 900px;
+margin: 0 auto;
+}
 
-        .container {
-            position: relative;
-            z-index: 2;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 40px 20px;
-        }
+.hero h2 {
+font-size: 2.5rem;
+margin-bottom: 1.5rem;
+background: linear-gradient(90deg, #e0e0e0 0%, #b794f6 50%, #e0e0e0 100%);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+background-clip: text;
+}
 
-        .glass-nav {
-            background: rgba(255, 255, 255, 0.08);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 20px;
-            padding: 20px 40px;
-            margin-bottom: 60px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
+.hero p {
+font-size: 1.2rem;
+line-height: 1.8;
+color: #c0c0c0;
+margin-bottom: 2rem;
+}
 
-        .glass-nav:hover {
-            background: rgba(255, 255, 255, 0.12);
-            box-shadow: 0 8px 32px rgba(31, 38, 135, 0.2);
-        }
+.features-flow {
+padding: 3rem 2rem;
+max-width: 1000px;
+margin: 0 auto;
+}
 
-        .logo {
-            font-size: 28px;
-            font-weight: 700;
-            color: var(--text-primary);
-            letter-spacing: -1px;
-        }
+.feature-item {
+display: flex;
+align-items: center;
+gap: 3rem;
+margin: 4rem 0;
+padding: 2rem;
+}
 
-        .nav-links {
-            display: flex;
-            gap: 30px;
-            list-style: none;
-        }
+.feature-item:nth-child(even) {
+flex-direction: row-reverse;
+}
 
-        .nav-links a {
-            color: var(--text-secondary);
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s;
-        }
+.feature-icon {
+font-size: 4rem;
+min-width: 100px;
+text-align: center;
+filter: drop-shadow(0 0 20px rgba(168, 85, 247, 0.4));
+}
 
-        .nav-links a:hover {
-            color: var(--text-primary);
-        }
+.feature-content {
+flex: 1;
+}
 
-        .hero {
-            text-align: center;
-            margin-bottom: 80px;
-        }
+.feature-content h3 {
+font-size: 1.8rem;
+margin-bottom: 1rem;
+color: #b794f6;
+}
 
-        .hero h1 {
-            font-size: 72px;
-            font-weight: 800;
-            color: var(--text-primary);
-            margin-bottom: 20px;
-            line-height: 1.1;
-            letter-spacing: -2px;
-        }
+.feature-content p {
+color: #d0d0d0;
+line-height: 1.7;
+font-size: 1.1rem;
+}
 
-        .hero p {
-            font-size: 24px;
-            color: var(--text-secondary);
-            margin-bottom: 40px;
-        }
+.code-section {
+padding: 4rem 2rem;
+max-width: 900px;
+margin: 0 auto;
+text-align: center;
+}
 
-        .glass-card {
-            background: var(--glass-bg);
-            backdrop-filter: var(--blur-strong);
-            -webkit-backdrop-filter: var(--blur-strong);
-            border: 1px solid var(--glass-border);
-            border-radius: var(--radius-md);
-            box-shadow: var(--shadow-glass), inset 0 1px 0 rgba(255, 255, 255, 0.1);
-            padding: 40px;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-            overflow: hidden;
-        }
+.code-section h3 {
+font-size: 2rem;
+margin-bottom: 2rem;
+color: #b794f6;
+}
 
-        .glass-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0) 100%);
-            border-radius: inherit;
-            pointer-events: none;
-        }
+.code-animation {
+border-radius: 15px;
+padding: 2rem;
+position: relative;
+min-height: 200px;
+}
 
-        .glass-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 50px rgba(31, 38, 135, 0.5);
-            background: rgba(255, 255, 255, 0.15);
-        }
+.code-line {
+font-family: 'Courier New', monospace;
+font-size: 0.95rem;
+color: #a0a0a0;
+text-align: left;
+margin: 0.5rem 0;
+opacity: 0;
+animation: fadeIn 0.5s ease forwards;
+}
 
-        .cards-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-bottom: 60px;
-        }
+.code-line:nth-child(1) { animation-delay: 0.2s; }
+.code-line:nth-child(2) { animation-delay: 0.5s; }
+.code-line:nth-child(3) { animation-delay: 0.8s; }
+.code-line:nth-child(4) { animation-delay: 1.1s; }
+.code-line:nth-child(5) { animation-delay: 1.4s; }
 
-        .card-content {
-            position: relative;
-            z-index: 1;
-        }
+@keyframes fadeIn {
+to { opacity: 1; }
+}
 
-        .card-icon {
-            font-size: 48px;
-            margin-bottom: 20px;
-            filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
-        }
+.keyword { color: #c792ea; }
+.function { color: #82aaff; }
+.string { color: #c3e88d; }
+.comment { color: #676e95; font-style: italic; }
 
-        .card-title {
-            font-size: 28px;
-            font-weight: 700;
-            color: var(--text-primary);
-            margin-bottom: 15px;
-        }
+footer {
+padding: 2rem;
+text-align: center;
+color: #808080;
+border-top: 1px solid rgba(147, 51, 234, 0.2);
+margin-top: 4rem;
+}
 
-        .card-description {
-            font-size: 16px;
-            color: var(--text-secondary);
-            line-height: 1.6;
-        }
-
-        .glass-button {
-            background: rgba(255, 255, 255, 0.15);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            border-radius: 15px;
-            padding: 15px 40px;
-            color: var(--text-primary);
-            font-size: 18px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            text-decoration: none;
-            display: inline-block;
-        }
-
-        .glass-button:hover {
-            background: rgba(255, 255, 255, 0.25);
-            transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(255, 255, 255, 0.2);
-        }
-
-        .glass-input-group {
-            margin-top: 60px;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .glass-input {
-            width: 100%;
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 15px;
-            padding: 18px 25px;
-            color: white;
-            font-size: 16px;
-            margin-bottom: 20px;
-            transition: all 0.3s;
-        }
-
-        .glass-input::placeholder {
-            color: rgba(255, 255, 255, 0.5);
-        }
-
-        .glass-input:focus {
-            outline: none;
-            background: rgba(255, 255, 255, 0.15);
-            border-color: rgba(255, 255, 255, 0.4);
-            box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
-        }
-
-        @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 48px;
-            }
-
-            .hero p {
-                font-size: 18px;
-            }
-
-            .nav-links {
-                display: none;
-            }
-
-            .cards-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
+@media (max-width: 768px) {
+.feature-item {
+flex-direction: column !important;
+gap: 1.5rem;
+text-align: center;
+}
+}
+</style>
 </head>
 <body>
-    <div class="blob blob1"></div>
-    <div class="blob blob2"></div>
-    <div class="blob blob3"></div>
+<header>
+<div style="display: flex; align-items: center; gap: 1rem;">
+<div class="cat-shape"></div>
+<h1 class="logo">VECLIA</h1>
+</div>
+<a href="#" class="download-btn">Pobierz</a>
+</header>
 
-    <div class="container">
-        <nav class="glass-nav">
-            <div class="logo">Glass UI</div>
-            <ul class="nav-links">
-                <li><a href="#features">Features</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
+<section class="hero">
+<h2>Komunikacja bez kompromisów</h2>
+<p>
+Veclia to nowoczesny komunikator peer-to-peer z szyfrowaniem end-to-end. 
+Bezpieczny, prywatny i stworzony z myślą o wygodzie użytkownika — bez nachalnych subskrypcji.
+</p>
+</section>
 
-        <div class="hero">
-            <h1>Glassmorphism<br>Design System</h1>
-            <p>Nowoczesny interfejs z efektem szkła i rozmytego tła</p>
-            <a href="#" class="glass-button">Rozpocznij Teraz</a>
-        </div>
+<section class="features-flow">
+<div class="feature-item">
+<div class="feature-icon">🔒</div>
+<div class="feature-content">
+<h3>Szyfrowanie end-to-end</h3>
+<p>Twoje rozmowy są chronione od momentu wysłania do momentu odbioru. Tylko Ty i Twoi rozmówcy macie do nich dostęp — nikt więcej.</p>
+</div>
+</div>
 
-        <div class="cards-grid">
-            <div class="glass-card">
-                <div class="card-content">
-                    <div class="card-icon">🎨</div>
-                    <h3 class="card-title">Design</h3>
-                    <p class="card-description">Eleganckie, minimalistyczne interfejsy z efektem matowego szkła i subtelną przezroczystością.</p>
-                </div>
-            </div>
+<div class="feature-item">
+<div class="feature-icon">🌐</div>
+<div class="feature-content">
+<h3>Bezpośrednie połączenia P2P</h3>
+<p>Komunikacja peer-to-peer oznacza brak pośredników. Twoje dane nie trafiają na żadne serwery — pozostają tylko między Tobą a odbiorcą.</p>
+</div>
+</div>
 
-            <div class="glass-card">
-                <div class="card-content">
-                    <div class="card-icon">⚡</div>
-                    <h3 class="card-title">Performance</h3>
-                    <p class="card-description">Zoptymalizowane animacje i przejścia zapewniające płynność działania na wszystkich urządzeniach.</p>
-                </div>
-            </div>
+<div class="feature-item">
+<div class="feature-icon">🛠️</div>
+<div class="feature-content">
+<h3>Własne kanały i rozszerzenia</h3>
+<p>Programuj bezpośrednio w aplikacji. Twórz własne kanały, dostosowuj funkcje i rozszerzaj możliwości Veclii według swoich potrzeb.</p>
+</div>
+</div>
 
-            <div class="glass-card">
-                <div class="card-content">
-                    <div class="card-icon">🚀</div>
-                    <h3 class="card-title">Modern</h3>
-                    <p class="card-description">Wykorzystanie najnowszych standardów CSS z pełnym wsparciem dla backdrop-filter i blur.</p>
-                </div>
-            </div>
-        </div>
+<div class="feature-item">
+<div class="feature-icon">💜</div>
+<div class="feature-content">
+<h3>Bez nachalnych płatności</h3>
+<p>Veclia nie wciska Ci subskrypcji na każdym kroku. Używaj komunikatora swobodnie, bez presji finansowej i ukrytych kosztów.</p>
+</div>
+</div>
 
-        <div class="glass-card">
-            <div class="card-content">
-                <h2 class="card-title" style="text-align: center; margin-bottom: 30px;">Zostań w kontakcie</h2>
-                <div class="glass-input-group">
-                    <input type="email" class="glass-input" placeholder="Twój adres email">
-                    <input type="text" class="glass-input" placeholder="Twoje imię">
-                    <button class="glass-button" style="width: 100%;">Subskrybuj</button>
-                </div>
-            </div>
-        </div>
-    </div>
+<div class="feature-item">
+<div class="feature-icon">⚡</div>
+<div class="feature-content">
+<h3>Nowoczesny i intuicyjny</h3>
+<p>Elegancki interfejs zaprojektowany z myślą o Twojej wygodzie. Wszystko, czego potrzebujesz, dokładnie tam, gdzie tego oczekujesz.</p>
+</div>
+</div>
+</section>
+
+<section class="code-section">
+<h3>Programuj swoją komunikację</h3>
+<p style="color: #c0c0c0; font-size: 1.1rem; line-height: 1.7; margin-bottom: 2rem;">
+Twórz własne typy kanałów przy użyciu CSS, JavaScript i HTML. Projektuj interfejsy dokładnie takie, jakie chcesz — bez ograniczeń. 
+Veclia działa na silniku napisanym w Rust, gwarantując najwyższą wydajność i bezpieczeństwo.
+</p>
+<div class="code-animation glass">
+<div class="code-line"><span class="comment">// Stwórz własny kanał w Veclii</span></div>
+<div class="code-line"><span class="keyword">const</span> channel = <span class="function">veclia.createChannel</span>({</div>
+<div class="code-line">  name: <span class="string">'MójPrywatnyKanał'</span>,</div>
+<div class="code-line">  encryption: <span class="string">'AES-256'</span>,</div>
+<div class="code-line">  <span class="function">onMessage</span>: (msg) => <span class="function">handleMessage</span>(msg)</div>
+<div class="code-line">});</div>
+</div>
+</section>
+
+<footer>
+<p>&copy; 2025 Veclia. Komunikacja stworzona z myślą o ludziach.</p>
+</footer>
 </body>
 </html>
